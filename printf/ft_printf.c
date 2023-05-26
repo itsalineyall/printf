@@ -6,26 +6,21 @@
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 23:07:06 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/25 14:54:19 by alvieira         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:24:43 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdarg.h> // va_list, va_start, va_arg, va_end
-#include <unistd.h>
-#include <stdio.h>
 // cspdiuxX%
 
-int	function_c(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_verify(va_list args, char c)
+static int	ft_verify(va_list args, char c)
 {
 	if (c == 'c')
-	return(function_c(va_arg(args, int)));
+	return(ft_putchar(va_arg(args, int)));
+	if (c == 's')
+		return(ft_putstr(va_arg(args, char *)));
+	if (c == 'i' || c == 'd')
+		return(ft_putnbr(va_arg(args, int)));
 	return (0);
 }
 
@@ -50,7 +45,7 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 		count++;
-		function_c(str[i]);		
+		ft_putchar(str[i]);		
 		i++;
 		}
 	}
@@ -61,6 +56,15 @@ int	ft_printf(const char *str, ...)
 int	main(void)
 {
 	int x = ft_printf("char is %c\n", 'A');
-	printf("return = %d\n", x);
+	printf("return = %d\n\n", x);
+
+
+	char *s = "aline";
+	int z = ft_printf("my name is %s\n", s);
+	printf("return = %d\n\n", z);
+
+	int n = 800;
+	int r = ft_printf("%d\n", n);
+	printf("return = %i", r);
 	return (0);
 }
