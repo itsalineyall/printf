@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/04/18 15:52:08 by alvieira          #+#    #+#             */
+/*   Updated: 2023/04/18 17:05:17 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+// Verifica se um caractere é uma letra do alfabeto ou um dígito decimal.
 
-int	ft_putchar(char c)
+#include "libft.h"
+
+int	ft_isalnum(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	if ((ft_isalpha(c) == 1) || (ft_isdigit(c) == 1))
+		return (1);
+	else
+		return (0);
 }

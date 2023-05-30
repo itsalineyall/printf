@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/05/14 17:42:33 by alvieira          #+#    #+#             */
+/*   Updated: 2023/05/19 13:58:37 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
+// essa função adiciona um elemento no inicio da lista
+// lst: o endereço do ponteiro para o primeiro elemento da lista
+// new: o endereço do ponteiro para o elemento a ser adicionado à lista
 
-int	ft_putchar(char c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	write(1, &c, 1);
-	return (1);
+	if (lst != NULL || new != NULL)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

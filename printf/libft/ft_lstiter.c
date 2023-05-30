@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/05/20 18:23:37 by alvieira          #+#    #+#             */
+/*   Updated: 2023/05/21 23:08:38 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+// essa funcao aplica a funcao f em cada elemento da lista
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	write(1, &c, 1);
-	return (1);
+	if (lst && f)
+	{
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/05/19 14:01:59 by alvieira          #+#    #+#             */
+/*   Updated: 2023/05/20 17:32:50 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+t_list	*ft_lstlast(t_list *lst)
 {
-	write(1, &c, 1);
-	return (1);
+	t_list	*last;
+
+	last = lst;
+	if (lst == NULL)
+		return (NULL);
+	while (last->next != NULL)
+		last = last->next;
+	return (last);
 }

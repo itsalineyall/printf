@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/04/18 18:09:25 by alvieira          #+#    #+#             */
+/*   Updated: 2023/04/18 18:20:54 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+// Verifica se um caractere é imprimível ou não
+// Na tabela ASCII, os caracteres imprimíveis estão
+// localizados na faixa de números de 32 a 126 (decimal)
 
-int	ft_putchar(char c)
+#include "libft.h"
+
+int	ft_isprint(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

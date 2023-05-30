@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_hex.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:19:07 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 18:17:47 by alvieira         ###   ########.fr       */
+/*   Created: 2023/05/30 10:47:33 by alvieira          #+#    #+#             */
+/*   Updated: 2023/05/30 18:18:39 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_count(long int nb)
+static int	ft_count(unsigned int nb)
 {
 	int count;
 
 	count = 0;
 	while (nb > 0)
 	{
-		nb = nb / 10;
+		nb = nb / 16;
 		count++;
 	}
 	if (count == 0)
@@ -27,26 +27,37 @@ static int	ft_count(long int nb)
 	return (count);
 }
 
-int	ft_putnbr(int n)
+static void	ft_printhexa(unsigned int n, char c)
 {
-	long int	nb;
-	int	count;
+	char			*base_x;
+	char			*base_X;
 
-	count = 0;
-	nb = n;
-	if (nb < 0)
+	base_x = "0123456789abcdef";
+	base_X = "0123456789ABCDEF";
+
+	if (n >= 16)
 	{
-		write(1, "-", 1);
-		nb = nb * -1;
-		count += 1;
-	}
-	count = ft_count(nb) + count;
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_printhexa(n / 16, c);
+		ft_printhexa(n % 16, c);
 	}
 	else
-		ft_putchar(nb + 48);
-	return (count);
+	{
+		if (n < 10)
+			ft_putchar(n + 48);
+		else
+		{
+			if (c == 'x')
+				ft_putchar(base_x[n]);
+			if (c == 'X')
+			ft_putchar(base_X[n]);
+		}
+	}
+}
+
+
+int ft_hex(unsigned int	n, char c)
+{
+	ft_printhexa(n, c);
+
+	return (ft_count(n));
 }

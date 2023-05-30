@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/05/14 01:16:33 by alvieira          #+#    #+#             */
+/*   Updated: 2023/05/21 23:02:23 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"\
 
-int	ft_putchar(char c)
+// essa funcao cria um novo elemento da lista
+
+t_list	*ft_lstnew(void *content)
 {
-	write(1, &c, 1);
-	return (1);
+	t_list	*newnode;
+
+	newnode = (t_list *)malloc(sizeof(t_list));
+	if (newnode == NULL)
+		return (NULL);
+	newnode->content = content;
+	newnode->next = NULL;
+	return (newnode);
 }

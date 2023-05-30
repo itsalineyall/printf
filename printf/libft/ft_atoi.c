@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/04/28 16:13:27 by alinevieira       #+#    #+#             */
+/*   Updated: 2023/04/29 16:08:25 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_atoi(const char *nptr)
 {
-	write(1, &c, 1);
-	return (1);
+	int	res;
+	int	sign;
+	int	i;
+
+	res = 0;
+	sign = 1;
+	i = 0;
+	while ((nptr[i] == 32) || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
+		sign = sign * -1;
+	if (nptr[i] == '-' || nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = (res * 10) + (nptr[i] - 48);
+		i++;
+	}
+	return (res * sign);
 }

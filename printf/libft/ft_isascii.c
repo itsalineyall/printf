@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:17:21 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 17:44:55 by alvieira         ###   ########.fr       */
+/*   Created: 2023/04/18 17:07:48 by alvieira          #+#    #+#             */
+/*   Updated: 2023/04/18 17:46:49 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+// Verifica se um valor inteiro representa um caractere 
+// ASCII (0-127) (1) Positivo (0) Negativo
+
+int	ft_isascii(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvieira <alvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 18:18:04 by alvieira          #+#    #+#             */
-/*   Updated: 2023/05/30 18:35:47 by alvieira         ###   ########.fr       */
+/*   Created: 2023/04/22 10:28:52 by alvieira          #+#    #+#             */
+/*   Updated: 2023/04/24 13:05:14 by alvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *str)
+// Copiar um bloco de dados de uma área de memória
+// para outra em C/C++, em uma única frase.
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	unsigned char		*ptr1;
+	const unsigned char	*ptr2;
+	size_t				i;
 
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
-	if (!str)
+	ptr1 = (unsigned char *) dest;
+	ptr2 = (const unsigned char *) src;
+	while (i < n)
 	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while(str[i])
-	{
-		write (1, &str[i], 1);
+		ptr1[i] = ptr2[i];
 		i++;
 	}
-	return(i);
+	return (dest);
 }
